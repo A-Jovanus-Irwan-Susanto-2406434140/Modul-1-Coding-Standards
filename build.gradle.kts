@@ -34,14 +34,16 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor("org.projectlombok:lombok")
-    testImplementation("org.springframework.boot:spring-boot-starter-thymeleaf-test")
-    testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-    testImplementation("org.seleniumhg.selenium:selenium-java:$seleniumJavaVersion")
+    testImplementation("org.seleniumhq.selenium:selenium-java:$seleniumJavaVersion")
     testImplementation("io.github.bonigarcia:selenium-jupiter:$seleniumJupiterVersion")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
+//    testRuntimeOnly("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
+//    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
+    //    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
+    // saya tidak menggunakan ini dikarenakan punya JUnit punya saya di-override manual dan
+    // selenium jupiter saya bentrok dengan JUnit Spring Boot saya.
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.github.bonigarcia:webdrivermanager:${webdrivermanagerVersion}")
 }
 tasks.register<Test>("unitTest"){
     description= "Runs unit tests."
